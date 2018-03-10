@@ -22,6 +22,7 @@
     {
         using (Html.BeginForm("ListForSale", "Property"))
         {
+            @Html.AntiForgeryToken()
             @Html.Hidden("PropertyId", property.Id)
             <input class="btn btn-primary" type="submit" value="List Property For Sale" />
         }

@@ -42,6 +42,7 @@ namespace OrangeBricks.Web.Controllers.Property
 
         [OrangeBricksAuthorize(Roles = "Seller")]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(CreatePropertyCommand command)
         {
             var handler = new CreatePropertyCommandHandler(_context);
@@ -64,6 +65,7 @@ namespace OrangeBricks.Web.Controllers.Property
 
         [HttpPost]
         [OrangeBricksAuthorize(Roles = "Seller")]
+        [ValidateAntiForgeryToken]
         public ActionResult ListForSale(ListPropertyCommand command)
         {
             var handler = new ListPropertyCommandHandler(_context);
@@ -83,6 +85,7 @@ namespace OrangeBricks.Web.Controllers.Property
 
         [HttpPost]
         [OrangeBricksAuthorize(Roles = "Buyer")]
+        [ValidateAntiForgeryToken]
         public ActionResult MakeOffer(MakeOfferCommand command)
         {
             var handler = new MakeOfferCommandHandler(_context);
