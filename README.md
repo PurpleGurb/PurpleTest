@@ -54,9 +54,9 @@ Along side the make offer button for a property a new button has been added to a
 
 The sample codebase is clearly based upon the default Visual Studio project so its aim of advertising the ease at which an MVC website can be created may not meet the specific needs of a business.
 
-Since each business' needs differ it can be difficult to accurately comment on whether the project meets it requirements.  Requirements such as scalability, performance and mantainability will vary based on business's infrastructure, team, growth plans and ulitmately budget.
+Since each business' needs differ it can be difficult to accurately comment on whether the project meets it requirements.  Requirements such as scalability, performance and mantainability will vary based on business's infrastructure, team, growth plans and ultimately budget.
 
-This leaves the code itself to comment upon and some general suggestions with could be used depending on the requirements.
+This leaves the code itself to comment upon and some general suggestions which could be used depending on the requirements.
 
 #### Security
 
@@ -66,7 +66,7 @@ This leaves the code itself to comment upon and some general suggestions with co
 
 * The project did not have any Content Security Policies in place.
 
-* The password complexity strength has been weakend by the View Model class.  It was not restored to ease development.
+* The password complexity strength has been weakend by the RegisterViewModel View Model class.  It was not restored to ease development.
 
 * The web server's attack surface was too great, it has been reduced by disabling web server features in the web.config file. 
 
@@ -80,13 +80,12 @@ This leaves the code itself to comment upon and some general suggestions with co
 
 * Output caching could be used to improve performance.
 
-* Entity Framework 
 
 #### Scalability
 
-* Scalability can be achieved through the infrastructure it runs on as well as the project's architecture.  Ensuring the architecture can help the software scale means some trade off from scaling through infrastruture can be mitigated, such as unbalanced loads.
+* Scalability can be achieved through the infrastructure it runs on as well as the project's architecture.  Ensuring the architecture is designed to scale can help the software mitigate some of the trade offs from scaling through infrastruture alone, such as poorly balanced server loads.
 
-* The project as it stands can be scaled up running it on a server using as much resources as possible.  This means that although the project may be able to perform faster the resources will not be target and bottlenecks in the sofwtare will remain.
+* The project as it stands can be scaled up running it on a server using as much resources as possible.  This means that although the project may be able to perform faster the resources will not target any bottlenecks in the software will conintue to cause problems.
 
 * It could also be scaled out across several servers using load balancing tools such as sticky IP routers.  However it would mean that servers would unevely balance a load.
 
@@ -97,9 +96,9 @@ This leaves the code itself to comment upon and some general suggestions with co
 
 ##### Design
 
-* Classes should be be loosely coupled and use interfaces along with dependency injection to help achieve it.  In addition using a service bus or stream processor that supports a publish and subscribe model could help decouple the classes.  The classes could be grouped into functions of domain specific services as move towards microservices.
+* Classes should be be loosely coupled and use interfaces along with dependency injection to help achieve it.  In addition using a service bus or stream processor that supports a publish and subscribe model could help decouple the classes.  The classes could be grouped into functions of domain specific services as a move towards microservices.
 
-* As the project grows classes within Entity Framework's will grow too degrdaing performance.  This can be stemmed by using a Domain Driven Design to split the classes across many more Entity Framework models.
+* As the project grows, classes within the Entity Framework model will grow too degrading performance.  This can be stemmed by using a Domain Driven Design to split the classes across many more Entity Framework models.
 
 * The database design may not be suitable for any reporting or business intelligence needs.
 
