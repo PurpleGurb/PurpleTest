@@ -31,11 +31,12 @@ namespace OrangeBricks.Web.Controllers.Property
         [OrangeBricksAuthorize(Roles = "Seller")]
         public ActionResult Create()
         {
-            var viewModel = new CreatePropertyViewModel();
-
-            viewModel.PossiblePropertyTypes = new string[] { "House", "Flat", "Bungalow" }
+            var viewModel = new CreatePropertyViewModel
+            {
+                PossiblePropertyTypes = new string[] { "House", "Flat", "Bungalow" }
                 .Select(x => new SelectListItem { Value = x, Text = x })
-                .AsEnumerable();
+                .AsEnumerable()
+            };
 
             return View(viewModel);
         }
@@ -90,6 +91,28 @@ namespace OrangeBricks.Web.Controllers.Property
         {
             var handler = new MakeOfferCommandHandler(_context);
 
+            command.BuyerUserId = User.Identity.GetUserId();
+            handler.Handle(command);
+
+            return RedirectToAction("Index");
+        }
+
+        [OrangeBricksAuthorize(Roles = "Buyer")]
+        public ActionResult BookViewing(int id)
+        {
+            var builder = new BookViewingViewModelBuilder(_context);
+            var viewModel = builder.Build(id);
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [OrangeBricksAuthorize(Roles = "Buyer")]
+        [ValidateAntiForgeryToken]
+        public ActionResult BookViewing(BookViewingCommand command)
+        {
+            var handler = new BookViewingCommandHandler(_context);
+
+            command.BuyerUserId = User.Identity.GetUserId();
             handler.Handle(command);
 
             return RedirectToAction("Index");

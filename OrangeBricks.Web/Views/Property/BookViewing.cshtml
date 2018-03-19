@@ -1,0 +1,29 @@
+﻿@model OrangeBricks.Web.Controllers.Property.ViewModels.BookViewingViewModel
+@{
+    ViewBag.Title = "Book Viewing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Book Viewing</h2>
+
+<p>When would you like to view @Model.PropertyType on @Model.StreetName?</p>
+@using (Html.BeginForm("BookViewing", "Property", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(m => m.When, "Appointment", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.Hidden("PropertyId", Model.PropertyId)
+            <!-- date format hard coded for expediency, normally look it up and set accordingly-->
+            @Html.TextBoxFor(m => m.When, new { @class = "form-control datepicker", @data_provide = "datepicker", @data_auto_close = "true", @data_date_format="dd/mm/yyyy" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Book Viewing" />
+        </div>
+    </div>
+}
+@section Scripts{
+    @Scripts.Render("~/bundles/datepicker")
+    @Styles.Render("~/Content/datepicker")
+}

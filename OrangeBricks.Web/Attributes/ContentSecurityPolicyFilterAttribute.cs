@@ -7,9 +7,9 @@ namespace OrangeBricks.Web.Attributes
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var response = filterContext.HttpContext.Response;
-            response.AddHeader("Content-Security-Policy", "script-src 'self'");
-            response.AddHeader("X-WebKit-CSP", "script-src 'self'");
-            response.AddHeader("X-Content-Security-Policy", "script-src 'self'");
+            response.AddHeader("Content-Security-Policy", "script-src 'self' 'unsafe-inline'");
+            response.AddHeader("X-WebKit-CSP", "script-src 'self' 'unsafe-inline'");
+            response.AddHeader("X-Content-Security-Policy", "script-src 'self' 'unsafe-inline'");
             base.OnActionExecuting(filterContext);
         }
     }

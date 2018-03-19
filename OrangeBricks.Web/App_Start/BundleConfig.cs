@@ -27,6 +27,12 @@ namespace OrangeBricks.Web
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
+            bundles.Add(new ScriptBundle("~/bundles/datepicker").Include(
+                      "~/Scripts/bootstrap-datepicker.js"));
+
+            bundles.Add(new StyleBundle("~/Content/datepicker").Include(
+                      "~/Content/bootstrap-datepicker3.css"));
+
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862
             BundleTable.EnableOptimizations = true;
