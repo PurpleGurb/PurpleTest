@@ -44,11 +44,11 @@ Good luck!
 
 ### Objective 1 - Extend an existing feature
 
-A new link at the top of the page has been added to allow a buyer to view all offers made on any number of properties.  This is approach enables buy to let users to easily see the status of many offers at one.
+A new link at the top of the page has been added to allow a buyer to view all offers made on any number of properties.  This approach enables buy to let users to easily see the status of many offers at once.
 
 ### Objective 2 – Add a new feature
 
-Along side the make offer button for a property a new button has been added to allow a user to create an appointment to view the property.  There is no way of seeing the appointment to confirm it to manage conflicts or the seller to reject an appointment if not convienent in a similar process to making and rejecting an offer. This approach had been started but is not completed.
+Alongside the make offer button for a property a new button has been added to allow a buyer to create an appointment to view the property.  There is no way of seeing the appointment to confirm it to manage scheduling conflicts or for the seller to reject an appointment if it is not convienent. A process similar to making and rejecting an offer could accommodate these additional use cases. An attempt to implement these additional features had been started but not completed.
 
 ### Objective 3 - Review the existing code
 
@@ -66,7 +66,7 @@ This leaves the code itself to comment upon and some general suggestions which c
 
 * The project did not have any Content Security Policies in place.
 
-* The password complexity strength has been weakend by the RegisterViewModel View Model class.  It was not restored to ease development.
+* The password complexity strength has been weakend by the RegisterViewModel View Model class by overriding the Asp.Net Identity default.  It was not restored to ease development.
 
 * The web server's attack surface was too great, it has been reduced by disabling web server features in the web.config file. 
 
@@ -83,7 +83,7 @@ This leaves the code itself to comment upon and some general suggestions which c
 
 #### Scalability
 
-* Scalability can be achieved through the infrastructure it runs on as well as the project's architecture.  Ensuring the architecture is designed to scale can help the software mitigate some of the trade offs from scaling through infrastruture alone, such as poorly balanced server loads.
+* Scalability can be achieved through the infrastructure it runs on, as well as the project's architecture.  Ensuring the architecture is designed to scale can help the software mitigate some of the trade offs from scaling through infrastruture alone, such as poorly balanced server loads.
 
 * The project as it stands can be scaled up running it on a server using as much resources as possible.  This means that although the project may be able to perform faster the resources will not target any bottlenecks in the software will conintue to cause problems.
 
@@ -92,6 +92,7 @@ This leaves the code itself to comment upon and some general suggestions which c
 #### Maintainbility.
 
 * Given there are unit tests, there was low code coverage.
+* Since the code produces a monolithic application an update of any size means the entire website has to be replaced.  This places a greater importance on regression testing.
 
 
 ##### Design
